@@ -10,6 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :rumbl, RumblWeb.Endpoint,
+  http: [port: {:system, "PORT"}],
   load_from_system_env: true,
   url: [scheme: "https", host: "sheltered-sierra-96649.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
