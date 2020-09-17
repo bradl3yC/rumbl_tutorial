@@ -1,13 +1,10 @@
 defmodule Rumbl.Multimedia do
-  @moduledoc """
-  The Multimedia context.
-  """
-
   import Ecto.Query, warn: false
+
   alias Rumbl.Repo
   alias Rumbl.Accounts
-
   alias Rumbl.Multimedia.Video
+  alias Rumbl.Multimedia.Category
 
   @doc """
   Returns the list of videos.
@@ -114,6 +111,10 @@ defmodule Rumbl.Multimedia do
     Video
     |> user_videos_query(user)
     |> Repo.get!(id)
+  end
+
+  def create_category!(name) do
+    Repo.insert!(%Category{name: name}, on_conflict: :nothing)
   end
 
   defp user_videos_query(query, %Accounts.User{id: user_id}) do
