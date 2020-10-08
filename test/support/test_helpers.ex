@@ -9,9 +9,11 @@ defmodule Rumbl.TestHelpers do
       attrs
       |> Enum.into(%{
         name: "Some User",
-        username: "user#{System.unique_integer([:positive])}", password: attrs[:password] || "supersecret"
+        username: "user#{System.unique_integer([:positive])}",
+        password: attrs[:password] || "supersecret"
       })
       |> Accounts.register_user()
+
     user
   end
 
@@ -19,8 +21,10 @@ defmodule Rumbl.TestHelpers do
     attrs =
       Enum.into(attrs, %{
         title: "A Title",
-        url: "http://example.com", description: "a description"
+        url: "http://example.com",
+        description: "a description"
       })
+
     {:ok, video} = Multimedia.create_video(user, attrs)
     video
   end

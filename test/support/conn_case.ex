@@ -4,7 +4,8 @@ defmodule RumblWeb.ConnCase do
   using do
     quote do
       # Import conveniences for testing with connections
-      use Phoenix.ConnTest
+      import Plug.Conn
+      import Phoenix.ConnTest
       import Rumbl.TestHelpers
       alias RumblWeb.Router.Helpers, as: Routes
 
